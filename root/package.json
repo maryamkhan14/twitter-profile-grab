@@ -1,12 +1,14 @@
 {
   "name": "root",
   "version": "1.0.0",
-  "description": "Twitter Profile Grab",
+  "description": "Twitter Profile Grab root",
   "main": "backend/server.js",
   "scripts": {
-    "dev": "cd ../frontend && npm run start",
-    "build": "cd ../frontend && npm run build"
+    "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm start\" "
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
 }
