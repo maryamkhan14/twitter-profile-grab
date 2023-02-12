@@ -46,7 +46,13 @@ const ProfileDetails = ({ profile }) => {
         p={3}
         container
       >
-        <Grid item xs={12} display="flex" justifyContent="space-evenly">
+        <Grid
+          item
+          xs={12}
+          display="flex"
+          justifyContent="space-around"
+          columnGap={2}
+        >
           <Typography variant="body1">Name: {profile.name}</Typography>
           <Typography variant="body1">ID: {profile.id}</Typography>
         </Grid>
