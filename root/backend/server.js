@@ -11,6 +11,7 @@ const app = express();
 
 // middleware
 // look if there's any body in the request, if so, then transform to json
+app.use(express.static("build"));
 app.use(express.json());
 
 // find profile routes (but only when a certain path receives a request)
@@ -20,7 +21,8 @@ app.use(express.json());
 // routes for searching for a new user
 app.use("/search", searchProfileRoutes);
 
+const PORT = process.env.PORT || 3001;
 // connect to DB
-app.listen(process.env.PORT, () => {
-  console.log("connected to db and listening on port ", process.env.PORT);
+app.listen(PORT, () => {
+  console.log(`connected to db and listening on port ${PORT}`);
 });
