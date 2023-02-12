@@ -2,7 +2,7 @@
 require("dotenv").config();
 
 const express = require("express");
-
+const cors = require("cors");
 // const saveProfileRoutes = require("./routes/saveProfiles");
 const searchProfileRoutes = require("./routes/searchProfiles");
 
@@ -11,7 +11,7 @@ const app = express();
 
 // middleware
 // look if there's any body in the request, if so, then transform to json
-app.use(express.static("build"));
+app.use(cors());
 app.use(express.json());
 
 // find profile routes (but only when a certain path receives a request)
