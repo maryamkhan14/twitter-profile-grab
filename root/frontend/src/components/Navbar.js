@@ -1,12 +1,12 @@
-import { Link } from "react-router-dom";
+import { Box, Typography } from "@mui/material";
 const Navbar = () => {
   return (
     <header>
-      <div className="container">
-        <Link to="/">
-          <h1>Twitter Profile Grab</h1>
-        </Link>
-      </div>
+      <Box className="navbarBox">
+        <Typography variant="h3" pt={3}>
+          Twitter Profile Grab
+        </Typography>
+      </Box>
     </header>
   );
 };

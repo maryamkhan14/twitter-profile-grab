@@ -12,7 +12,7 @@ root.render(
       display="flex"
       flex="1 0 1"
       flexDirection="column"
-      justifyContent="center"
+      justifyContent="space-around"
       alignItems="center"
       padding={1}
       sx={{

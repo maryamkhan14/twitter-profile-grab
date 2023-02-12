@@ -3,10 +3,11 @@ const themeGlobal = createTheme({
   stretch: { height: "100%" },
   palette: {
     background: {
-      default: "#000",
+      default: "#D3D3D3",
     },
     primary: {
       main: "#fff",
+      alt: "#D3D3D3",
     },
     text: {
       primary: "#173A5E",

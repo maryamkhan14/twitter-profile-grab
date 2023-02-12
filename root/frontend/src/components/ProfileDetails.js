@@ -1,13 +1,13 @@
 import React from "react";
-
+import { Box } from "@mui/material";
 const ProfileDetails = ({ profile }) => {
   return (
-    <div className="profile-details">
+    <Box className="profile-details">
       <img src={profile.profile_image_url} alt="Profile" />
       <p>Username: {profile.username}</p>
       <p>Name: {profile.name}</p>
       <p>ID: {profile.id}</p>
-    </div>
+    </Box>
   );
 };
 

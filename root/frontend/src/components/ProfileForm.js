@@ -1,29 +1,39 @@
 import React from "react";
+import {
+  Box,
+  Alert,
+  Button,
+  Typography,
+  CircularProgress,
+} from "@mui/material";
+import TwitterIcon from "@mui/icons-material/Twitter";
 import { useState, useEffect } from "react";
 
-const ProfileForm = ({ handleProfileChange, switchLoading }) => {
+const ProfileForm = ({ handleProfileChange }) => {
   const [username, setUsername] = useState("");
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+
   const searchForUser = async (user) => {
     const twitterSearchResult = await fetch(`/search/${user}`);
     let twitterSearchResultJSON = await twitterSearchResult.json();
 
     if (!twitterSearchResult.ok) {
       setError(twitterSearchResultJSON.error);
-      switchLoading(false);
+      setLoading(false);
     }
 
     if (twitterSearchResult.ok) {
       handleProfileChange(twitterSearchResultJSON.profile);
       setUsername("");
       setError(null);
-      switchLoading(false);
+      setLoading(false);
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    switchLoading(true);
+    setLoading(true);
     await searchForUser(username);
   };
 
@@ -32,21 +42,52 @@ const ProfileForm = ({ handleProfileChange, switchLoading }) => {
   }, []);
 
   return (
-    <form className="addProfile" onSubmit={handleSubmit}>
-      <h3>Add a new profile</h3>
+    <Box
+      component="form"
+      className="searchProfile"
+      onSubmit={handleSubmit}
+      display="flex"
+      flexDirection="column"
+      justifyContent="center"
+      gap={3}
+    >
+      <Typography variant="h4" color="secondary">
+        Search for a Twitter profile.
+      </Typography>
 
-      <label>Username</label>
-      {/* the reason there is a value prop is so that later on, if the username textbox's value is modified from elsewhere e.g. using a clear button, then the state should update too*/}
-      <input
-        type="text"
-        onChange={(e) => setUsername(e.target.value)}
-        value={username}
-        required="required"
-      />
+      <Box className="usernameInput" display="flex" gap={2}>
+        <label>Enter a username.</label>
+        {/* the reason there is a value prop is so that later on, if the username textbox's value is modified from elsewhere e.g. using a clear button, then the state should update too*/}
+        <input
+          type="text"
+          onChange={(e) => setUsername(e.target.value)}
+          value={username}
+          required="required"
+        />
+      </Box>
 
-      <button type="submit"> Submit </button>
-      {error && <label>{error}</label>}
-    </form>
+      <Box className="usernameSubmit" display="flex" gap={2}>
+        <Button
+          type="submit"
+          variant="contained"
+          color="info"
+          style={{ textTransform: "none" }}
+          endIcon={<TwitterIcon />}
+        >
+          {" "}
+          Submit{" "}
+        </Button>
+
+        {loading && (
+          <CircularProgress
+            color="secondary"
+            size="25px"
+            style={{ alignSelf: "center" }}
+          />
+        )}
+        {error && <Alert severity="error">{error}</Alert>}
+      </Box>
+    </Box>
   );
 };
 

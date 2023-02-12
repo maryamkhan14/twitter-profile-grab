@@ -7,18 +7,10 @@ import Navbar from "./components/Navbar";
 function App() {
   return (
     <BrowserRouter>
-      <Navbar />
-      <Box
-        width="80%"
-        height="80vh"
-        className="App"
-        display="flex"
-        flexDirection="column"
-        justifySelf="center"
-        justifyContent="center"
-        p={5}
-        sx={{ backgroundColor: "primary.main" }}
-      >
+      <Box>
+        <Navbar />
+      </Box>
+      <Box display="flex" flex="1 1 auto" p={4}>
         <div className="pages">
           <Routes>
             <Route path="/" element={<Home />} />

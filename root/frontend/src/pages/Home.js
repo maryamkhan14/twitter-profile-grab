@@ -1,4 +1,4 @@
-import { CircularProgress } from "@mui/material";
+import { Grid } from "@mui/material";
 import { useState } from "react";
 // components
 import ProfileDetails from "../components/ProfileDetails";
@@ -6,25 +6,43 @@ import ProfileForm from "../components/ProfileForm";
 
 const Home = () => {
   const [profile, setProfile] = useState(null);
-  const [loading, setLoading] = useState(false);
 
   const handleProfileChange = (profile) => {
     setProfile(profile);
   };
-  const switchLoading = (loading) => {
-    setLoading(loading);
-  };
   return (
-    <div className="home">
-      <ProfileForm
-        handleProfileChange={handleProfileChange}
-        switchLoading={switchLoading}
-      />
-      {loading && <CircularProgress color="secondary" />}
-      <div className="profiles">
+    <Grid
+      container
+      className="home"
+      width="80vw"
+      height="100%"
+      display="flex"
+      flexDirection="row"
+      justifySelf="center"
+      justifyContent="space-between"
+      p={5}
+      sx={{ backgroundColor: "primary.main" }}
+    >
+      <Grid
+        item
+        xs="auto"
+        className="profileForm"
+        display="flex"
+        justifyContent="center"
+      >
+        <ProfileForm handleProfileChange={handleProfileChange} />
+      </Grid>
+
+      <Grid
+        item
+        xs="5"
+        className="profileDetails"
+        display="flex"
+        sx={{ backgroundColor: "primary.alt" }}
+      >
         {profile && <ProfileDetails profile={profile} />}
-      </div>
-    </div>
+      </Grid>
+    </Grid>
   );
 };
 
