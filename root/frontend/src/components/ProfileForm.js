@@ -16,7 +16,9 @@ const ProfileForm = ({ handleProfileChange }) => {
   const [loading, setLoading] = useState(false);
 
   const searchForUser = async (user) => {
-    const twitterSearchResult = await fetch(`/search/${user}`);
+    const twitterSearchResult = await fetch(
+      `https://twitter-profile-grab.onrender.com/search/${user}`
+    );
     let twitterSearchResultJSON = await twitterSearchResult.json();
 
     if (!twitterSearchResult.ok) {
