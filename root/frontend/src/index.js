@@ -10,14 +10,8 @@ root.render(
     <Box
       height="100vh"
       display="flex"
-      flex="1 0 1"
       flexDirection="column"
       justifyContent="space-around"
-      alignItems="center"
-      padding={1}
-      sx={{
-        fontFamily: "Rubik",
-      }}
     >
       <App />
     </Box>

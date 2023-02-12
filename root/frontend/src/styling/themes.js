@@ -3,11 +3,11 @@ const themeGlobal = createTheme({
   stretch: { height: "100%" },
   palette: {
     background: {
-      default: "#D3D3D3",
+      default: "#DEDEDE",
     },
     primary: {
       main: "#fff",
-      alt: "#D3D3D3",
+      alt: "#F0F0F0",
     },
     text: {
       primary: "#173A5E",
@@ -19,6 +19,9 @@ const themeGlobal = createTheme({
   },
   typography: {
     fontFamily: "Rubik, Arial",
+    body3: {
+      fontStyle: "italic",
+    },
   },
   components: {
     MuiCssBaseline: {

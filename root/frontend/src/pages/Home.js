@@ -12,7 +12,7 @@ const Home = () => {
   };
   return (
     <Grid
-      container
+      item
       className="home"
       width="80vw"
       height="100%"
@@ -20,12 +20,14 @@ const Home = () => {
       flexDirection="row"
       justifySelf="center"
       justifyContent="space-between"
-      p={5}
+      p={3}
+      gap={3}
       sx={{ backgroundColor: "primary.main" }}
+      container
     >
       <Grid
         item
-        xs="auto"
+        lg={6}
         className="profileForm"
         display="flex"
         justifyContent="center"
@@ -35,7 +37,7 @@ const Home = () => {
 
       <Grid
         item
-        xs="5"
+        lg={4}
         className="profileDetails"
         display="flex"
         sx={{ backgroundColor: "primary.alt" }}

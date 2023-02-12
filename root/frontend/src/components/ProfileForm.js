@@ -5,6 +5,7 @@ import {
   Button,
   Typography,
   CircularProgress,
+  TextField,
 } from "@mui/material";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import { useState, useEffect } from "react";
@@ -49,20 +50,25 @@ const ProfileForm = ({ handleProfileChange }) => {
       display="flex"
       flexDirection="column"
       justifyContent="center"
+      alignItems="flex-start"
       gap={3}
     >
       <Typography variant="h4" color="secondary">
         Search for a Twitter profile.
       </Typography>
 
-      <Box className="usernameInput" display="flex" gap={2}>
-        <label>Enter a username.</label>
+      <Box className="usernameInput" display="flex" gap={2} alignItems="center">
+        <label>Enter a username:</label>
         {/* the reason there is a value prop is so that later on, if the username textbox's value is modified from elsewhere e.g. using a clear button, then the state should update too*/}
-        <input
+        <TextField
+          id="outlined-basic"
+          variant="outlined"
+          color="info"
+          size="small"
           type="text"
           onChange={(e) => setUsername(e.target.value)}
           value={username}
-          required="required"
+          required={true}
         />
       </Box>
 

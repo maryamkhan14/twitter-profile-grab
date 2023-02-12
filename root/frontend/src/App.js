@@ -1,22 +1,40 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Box } from "@mui/material";
+import { Grid } from "@mui/material";
 // pages and components
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 function App() {
   return (
     <BrowserRouter>
-      <Box>
-        <Navbar />
-      </Box>
-      <Box display="flex" flex="1 1 auto" p={4}>
-        <div className="pages">
+      <Grid item xs={12} container display="flex" gap={3}>
+        <Grid item xs={12} container display="flex">
+          <Navbar />
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          container
+          display="flex"
+          className="pages"
+          justifyContent={"center"}
+        >
           <Routes>
             <Route path="/" element={<Home />} />
           </Routes>
-        </div>
-      </Box>
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          container
+          display="flex"
+          className="pages"
+          justifyContent={"center"}
+        >
+          <Footer />
+        </Grid>
+      </Grid>
     </BrowserRouter>
   );
 }
