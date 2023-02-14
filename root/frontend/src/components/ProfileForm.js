@@ -16,18 +16,23 @@ const ProfileForm = ({ handleProfileChange }) => {
   const [loading, setLoading] = useState(false);
 
   const searchForUser = async (user) => {
-    const twitterSearchResult = await fetch(
-      `https://twitter-profile-grab.onrender.com/search/${user}`
-    );
+    // store result of fetch
+    const twitterSearchResult = await fetch(`/search/${user}`);
     let twitterSearchResultJSON = await twitterSearchResult.json();
+    console.log(twitterSearchResultJSON);
 
+    // handle error in fetch result
     if (!twitterSearchResult.ok) {
-      setError(twitterSearchResultJSON.error);
+      setError(twitterSearchResultJSON.errorMsg);
       setLoading(false);
     }
 
+    // handle successful fetch
     if (twitterSearchResult.ok) {
+      // invoke prop function with profile data
       handleProfileChange(twitterSearchResultJSON.profile);
+
+      // reset state variables
       setUsername("");
       setError(null);
       setLoading(false);
@@ -40,6 +45,7 @@ const ProfileForm = ({ handleProfileChange }) => {
     await searchForUser(username);
   };
 
+  // obtain profile for username "twitter" when page first loads
   useEffect(() => {
     searchForUser("twitter");
   }, []);
@@ -93,6 +99,8 @@ const ProfileForm = ({ handleProfileChange }) => {
             style={{ alignSelf: "center" }}
           />
         )}
+      </Box>
+      <Box className="error">
         {error && <Alert severity="error">{error}</Alert>}
       </Box>
     </Box>

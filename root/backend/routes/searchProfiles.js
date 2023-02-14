@@ -1,9 +1,8 @@
 const express = require("express");
 const { searchProfile } = require("../controllers/searchProfileController");
-// sets a router up
 const router = express.Router();
 
-// GET a user from Twitter API
+// GET endpoint for parameter username
 router.get("/:username", searchProfile);
 
 module.exports = router;
