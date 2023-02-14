@@ -7,6 +7,7 @@ import ProfileForm from "../components/ProfileForm";
 const Home = () => {
   const [profile, setProfile] = useState(null);
 
+  // update profile state variable when new profile is passed in
   const handleProfileChange = (profile) => {
     setProfile(profile);
   };
@@ -21,16 +22,16 @@ const Home = () => {
       justifySelf="center"
       justifyContent="space-between"
       p={3}
-      gap={3}
       sx={{ backgroundColor: "primary.main" }}
       container
     >
       <Grid
         item
-        lg={6}
+        lg={8}
         className="profileForm"
         display="flex"
-        justifyContent="center"
+        justifyContent="flex-start"
+        pr={1}
       >
         <ProfileForm handleProfileChange={handleProfileChange} />
       </Grid>
