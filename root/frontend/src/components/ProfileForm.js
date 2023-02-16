@@ -20,6 +20,7 @@ const ProfileForm = ({ handleProfileChange }) => {
     const twitterSearchResult = await fetch(
       `https://twitter-profile-grab-backend.onrender.com/search/${user}`
     );
+
     let twitterSearchResultJSON = await twitterSearchResult.json();
     console.log(twitterSearchResultJSON);
 
